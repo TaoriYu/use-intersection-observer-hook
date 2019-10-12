@@ -1,0 +1,23 @@
+{
+  "name": "use-intersection-observer",
+  "version": "1.0.0",
+  "description": "React hook implementation for Intersection Observer",
+  "main": "index.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "reack-hooks",
+    "intersection-observer"
+  ],
+  "author": "Taori",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/ramda": "^0.26.29",
+    "@types/react": "^16.9.5",
+    "ramda": "^0.26.1",
+    "react": "^16.10.2",
+    "typescript": "^3.6.4"
+  }
+}
