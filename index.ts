@@ -48,7 +48,7 @@ export function useNewIntersectionObserver<T extends HTMLElement>({ active = tru
   return [ref, ...entries]
 }
 
-export function registerObserverInstance({ active, ...options }: IRegisterObserverProps): IObserverObject {
+function registerObserverInstance({ active, ...options }: IRegisterObserverProps): IObserverObject {
   let callbackOptions: ICallbackOptions[] = [];
 
   const cbRunner = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
