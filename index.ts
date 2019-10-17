@@ -1,4 +1,4 @@
-import { equals, pipe, prop } from 'ramda';
+import { equals, pipe, prop, merge } from 'ramda';
 import { RefObject, useEffect, useRef, useState } from 'react';
 
 type TIntersectionObserverHook<T> = [RefObject<T>, ...IntersectionObserverEntry[]];
@@ -6,7 +6,7 @@ type TIntersectionObserverHook<T> = [RefObject<T>, ...IntersectionObserverEntry[
 type TSetEntries = (entries: IntersectionObserverEntry[]) => void;
 
 interface IObserverOptions extends IntersectionObserverInit {
-  active: boolean;
+  active?: boolean;
 }
 
 interface IObserverObject {
@@ -25,16 +25,23 @@ interface ICallbackOptions {
   element: Element;
 }
 
+/** Default values for useIntersectionObserver parameters */
+const DEFAULT_PARAMS: IObserverOptions = {
+  active: true,
+  rootMargin: '0px 0px 0px 0px',
+  threshold: 0,
+  root: null,
+};
 const observers: IObserverObject[] = [];
 
-export function useNewIntersectionObserver<T extends HTMLElement>({ active = true, ...options}: IObserverOptions): TIntersectionObserverHook<T> {
+export function useIntersectionObserver<T extends HTMLElement>(params?: IObserverOptions): TIntersectionObserverHook<T> {
   const ref = useRef<T>(null);
   const [entries, setEntries] = useState<IntersectionObserverEntry[]>([]);
-  const opts = { active, ...options };
+  const { active, ...options } = merge(params || {}, DEFAULT_PARAMS);
 
   useEffect(() => {
-    const observerInstance = observers.find(pipe(prop('options'), equals(opts))) ||
-      registerObserverInstance({ setEntries, ...opts });
+    const observerInstance = observers.find(pipe(prop('options'), equals(options))) ||
+      registerObserverInstance({ setEntries, ...options });
 
     if (ref.current && active) {
       return observerInstance.registerCallback(setEntries, ref.current);
