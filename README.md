@@ -16,7 +16,7 @@ yarn add useIntersectionObserver
 - **whole codebase is 100 lines only;**
 - it takes care of memory management;
 
-## Example
+## Usage example
 
 ```typescript
 import * as React from 'react';
