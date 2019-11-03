@@ -5,10 +5,10 @@ Tiny react compatible implementation of
 
 ## Installation
 ```
-npm install useIntersectionObserver
+npm install use-intersection-observer-hook
 ```
 ```
-yarn add useIntersectionObserver
+yarn add use-intersection-observer-hook
 ```
 
 ## Why do you need it
