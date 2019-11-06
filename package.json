@@ -1,6 +1,6 @@
 {
   "name": "use-intersection-observer-hook",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React hook implementation for Intersection Observer",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
